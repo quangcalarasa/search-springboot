@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" th:href="@{bootstrap.min.css}"/>
+    <title>User Management</title>
+</head>
+<body>
+    <div class="container col-8">
+        <h2>User Management</h2>
+        <div class="col-4">
+            <form th:object="${user}" th:action="@{/search}" method="get">
+                <input type="text" name="search" id="search" th:value="${search}" class="form-control"/>
+                <input type="submit" value="Search" class="btn btn-primary"/>
+            </form>
+        </div>
+
+        <table class="table table-active">
+
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each="user:${users}">
+                <td th:text="${user.name}"></td><br>
+                <td th:text="${user.email}"></td><br>
+                <td th:text="${user.phone}"></td><br>
+                <td>
+                    <a th:href="@{/edit?id={id}(id=${user.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/delete?id={id}(id=${user.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </table>
+        <a href="/add" class="btn btn-success">Create new User</a>
+    </div>
+</body>
+</html>

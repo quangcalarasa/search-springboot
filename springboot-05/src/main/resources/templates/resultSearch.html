@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" th:href="@{bootstrap.min.css}"/>
+    <title>Add User</title>
+</head>
+<body>
+<h2>Students List</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+
+    </tr>
+    <tr th:each="user: ${search}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}">name</td>
+        <td th:text="${user.phone}">surname</td>
+    </tr>
+</table>
+</body>
+</html>

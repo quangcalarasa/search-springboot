@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" th:href="@{bootstrap.min.css}"/>
+    <title>Edit User</title>
+</head>
+<body>
+<div class="container col-6">
+    <h2>Update User Information</h2>
+    <form th:object="${user}" th:action="@{save}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label th:text="Name" th:for="name"></label>
+            <input type="text" class="form-control" th:field="*{name}" placeholder="Name">
+        </div>
+        <div>
+            <label th:text="Email" th:for="email"></label>
+            <input type="text" class="form-control" th:field="*{email}" placeholder="Email">
+        </div>
+        <div>
+            <label th:text="Phone" th:for="phone"></label>
+            <input type="text" class="form-control" th:field="*{phone}" placeholder="Phone">
+        </div>
+        <div style="clear: both;display: block;height: 10px;"></div>
+        <input type="submit" value="Update User" class="btn btn-success">
+    </form>
+</div>
+
+</body>
+</html>
